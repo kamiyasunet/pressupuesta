@@ -1,0 +1,25 @@
+.results {
+    margin: auto;
+}
+
+@import '../../@theme/styles/themes';
+@include nb-install-component() {
+    nb-progress-bar~nb-progress-bar {
+        margin-top: 1rem;
+    }
+    ngx-chartjs-pie,
+    ngx-chartjs-bar,
+    ngx-chartjs-line,
+    ngx-chartjs-multiple-xaxis,
+    ngx-chartjs-bar-horizontal,
+    ngx-chartjs-radar {
+        display: block;
+        height: nb-theme(card-height-medium);
+        width: 100%;
+         ::ng-deep chart {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,164 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-header>Datos del paquete</nb-card-header>
+            <nb-card-body *ngIf="paquete">
+                <form (ngSubmit)="paqueteUpdate(fRegistro)" #fRegistro="ngForm">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="guia" class="label">Guía</label>
+                                <input [(ngModel)]="paquete.codigo" type="text" nbInput fullWidth name="guia" placeholder="Guía">
+                            </div>
+                            <div class="form-group">
+                                <label for="Zona" class="label">Zona</label>
+                                <input [(ngModel)]="paquete.zona" type="text" nbInput fullWidth name="zona" placeholder="Zona">
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo_postal" class="label">Código Postal</label>
+                                <input [(ngModel)]="paquete.codigo_postal" type="text" nbInput fullWidth name="codigo_postal" placeholder="Código Postal">
+                            </div>
+                            <div class="form-group">
+                                <label for="cliente" class="label">Cliente</label>
+                                <input [(ngModel)]="paquete.cliente" type="text" nbInput fullWidth name="cliente" placeholder="Cliente">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="guia" class="label">Tipo</label> <br>
+                                <nb-select [(ngModel)]="paquete.tipo" name="tipo" value="paquete.tipo" fullWidth placeholder="Tipo">
+                                    <nb-option selected value="paquete.tipo">{{paquete.tipo}}</nb-option>
+                                    <nb-option value="Normal">Normal</nb-option>
+                                    <nb-option value="COD">COD</nb-option>
+                                    <nb-option value="Alto valor">Alto valor</nb-option>
+                                    <nb-option value="Liverpool">Liverpool</nb-option>
+                                    <nb-option value="Brown">Brown</nb-option>
+                                    <nb-option value="Extendido">Extendido</nb-option>
+                                </nb-select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cod" class="label">COD</label>
+                                <input [(ngModel)]="paquete.cod" type="text" nbInput fullWidth name="cod" placeholder="COD">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono" class="label">Teléfono</label>
+                                <input [(ngModel)]="paquete.telefono" type="text" nbInput fullWidth name="telefono" placeholder="Telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="tamaño" class="label">Tamaño</label>
+                                <input [(ngModel)]="paquete.tamano" type="text" nbInput fullWidth name="tamano" placeholder="Tamaño">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="nombre_recepcion" class="label">Nombre de quien recibe</label>
+                                <input [(ngModel)]="paquete.nombre_recepcion" type="text" nbInput fullWidth name="nombre_recepcion" placeholder="Nombre de quien recibe">
+                            </div>
+                            <div class="form-group">
+                                <label for="parentesco" class="label">Parentesco quien recibe</label>
+                                <input [(ngModel)]="paquete.parentesco" type="text" nbInput fullWidth name="parentesco" placeholder="Parentesco quien recibe">
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion" class="label">Dirección</label>
+                                <textarea [(ngModel)]="paquete.direccion" rows="4" nbInput fullWidth name="direccion" placeholder="Dirección"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" nbButton status="success">Actualizar</button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <nb-card size="medium" class="col-md-12 col-lg-12 col-xxxl-12">
+            <nb-card-header>
+                Movimientos
+            </nb-card-header>
+            <nb-card-body>
+                <table class="table table-responsive-sm table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Acción</th>
+                            <th scope="col">Fecha </th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Responsable</th>
+                            <th scope="col">Excepciones</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let mov of movimientos">
+                            <td>{{ mov.id_movimiento }} </td>
+                            <td>{{ mov.estatus }} </td>
+                            <td>{{ mov.fecha | date:'shortDate' }}</td>
+                            <td>{{ mov.hora }}</td>
+                            <td>{{ mov.nombre }}</td>
+                            <td>{{ mov.excepciones }}</td>
+                            <td><button nbButton><nb-icon icon="menu-outline"></nb-icon></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-md-4">
+        <nb-card size="medium" class="col-md-12 col-lg-12 col-xxxl-12">
+            <nb-card-header>
+                Estatus
+            </nb-card-header>
+            <nb-card-body>
+                <nb-stepper orientation="vertical" disableStepNavigation>
+                    <nb-step hidden [completed]="entrada">
+
+                    </nb-step>
+                    <nb-step [label]="labelOne" [completed]="entrada">
+                        <ng-template #labelOne>Recibido</ng-template>
+                        <h5>El paquete ha sido entregado</h5>
+                    </nb-step>
+                    <nb-step [label]="labelTwo" [completed]="ruta">
+                        <ng-template #labelTwo>En ruta</ng-template>
+                        <h5>El paquete está en ruta de entrega</h5>
+                    </nb-step>
+                    <nb-step *ngIf="entregado" [label]="labelThree" selected [completed]="entregado">
+                        <ng-template #labelThree>Entregado</ng-template>
+                        <h5>El paquete ha sido entregado</h5>
+                    </nb-step>
+                    <nb-step *ngIf="noEntregado" [label]="labelFour" [completed]="noEntregado">
+                        <ng-template #labelFour>Excepcionado</ng-template>
+                        <h5>El paquete no se pudo entregar y se excepciono</h5>
+                    </nb-step>
+                </nb-stepper>
+                <!--   <button nbButton (click)="backToSelectPackage() ">ADD</button>
+                <button nbButton (click)="reset() ">reset</button> -->
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-md-6 ">
+        <nb-card size="large ">
+            <nb-card-header>
+                Mapa
+            </nb-card-header>
+            <nb-card-body>
+                <agm-map [latitude]="pMlat " [longitude]="pMlng " [zoom]="12 " style="height: 100% ">
+                    <agm-marker *ngFor="let marker of movimientos " [label]="{color:marker.color, text:marker.estatus, fontWeight: 'bold'} " [latitude]="marker.lat " [longitude]="marker.lng "></agm-marker>
+                </agm-map>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-md-6 ">
+        <nb-card size="large ">
+            <nb-card-header>
+                Evidencias
+            </nb-card-header>
+            <nb-card-body>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor explicabo repellendus culpa sit, quo laboriosam quasi cupiditate, debitis officia, earum voluptas nemo consequatur autem? Quo reprehenderit modi quos quod unde.
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

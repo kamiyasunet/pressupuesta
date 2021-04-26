@@ -1,0 +1,200 @@
+<div class="row ">
+    <div class="col-md-12 ">
+        <nb-card>
+            <nb-card-header>
+                <div class="row">
+                    <div class="col">
+                        <h5><i style="color: #AB47BC;" class="fas fa-chart-line"></i> {{actividad.actividad}} <span class="text-muted">
+                            </span><span class="text-muted ">
+                                {{actividad.zona}} {{actividad.fase}}
+                            </span></h5>
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        <ul class="list-inline ">
+                            <li class="list-inline-item ">
+
+                                <button (click)="open2()" nbButton outline status="primary" ghost size="small" nbTooltip="Editar actividad " nbTooltipPlacement="top ">
+                                    <span style="font-size: 2em; ">
+                                        <i class="fas fa-edit "></i>
+                                    </span>
+                                </button>
+                            </li>
+                            <li class="list-inline-item ">
+                                <button nbButton outline status="primary" ghost size="small" nbTooltip="Opciones" nbTooltipPlacement="top">
+                                    <span style="font-size: 2em; ">
+                                        <i class="fas fa-cogs "></i>
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nb-card-header>
+
+            <table class="table table-sm ">
+                <thead>
+                    <tr>
+                        <th scope="col ">Clave</th>
+                        <th scope="col ">Descripción</th>
+                        <th scope="col ">Unidad </th>
+                        <th scope="col ">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> 010209 </td>
+                        <td> Castillo de sección 0.15 x 0.15 mts. concreto hecho en obra f'c= 150 kg/cm2, agregado de 20 mm, incluye : cemento, arena, grava y agua, en revenimiento 8 a 10 cm, con revolvedora, 1saco trompo, mano de obra de fabricación, bajas
+                            resistencias., cimbra a 3 caras acabado comun a 4 usos, armada con 4 varillas del número 3 (3/8"), y estribos a cada 0.25 mts. del número 2 incluye: todo el material necesario, cimbra y descimbra, cortes, traslapes, desperdicios,
+                            habilitado y armado de acero, limpieza, mano de obra, equipo y herramienta de mano. </td>
+                        <td>PZA</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </nb-card>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <nb-card>
+            <nb-card-header>
+                Materiales
+            </nb-card-header>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Clave</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Unidad </th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> AMALI-031 </td>
+                            <td> Varilla de 1/2</td>
+                            <td>kg </td>
+                            <td>2.5 </td>
+                            <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                        </tr>
+                        <tr>
+                            <td> AMAIN-013 </td>
+                            <td> Equipo oxí-acetileno </td>
+                            <td>hora </td>
+                            <td>0.03000 </td>
+                            <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                        </tr>
+                        <tr>
+                            <td> AMALI-031 </td>
+                            <td> Rompedora eléctrica de 30 kg mca Makita con punta tipo lapiz </td>
+                            <td>hora </td>
+                            <td>1.11000 </td>
+                            <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                            <tr>
+                                <td> AMAIN-013 </td>
+                                <td> Equipo oxí-acetileno </td>
+                                <td>hora </td>
+                                <td>0.03000 </td>
+                                <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                            </tr>
+                            <tr>
+                                <td> AMALI-031 </td>
+                                <td> Rompedora eléctrica de 30 kg mca Makita con punta tipo lapiz </td>
+                                <td>hora </td>
+                                <td>1.11000 </td>
+                                <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                                <tr>
+                                    <td> AMAIN-013 </td>
+                                    <td> Equipo oxí-acetileno </td>
+                                    <td>hora </td>
+                                    <td>0.03000 </td>
+                                    <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                                </tr>
+                                <tr>
+                                    <td> AMALI-031 </td>
+                                    <td> Rompedora eléctrica de 30 kg mca Makita con punta tipo lapiz </td>
+                                    <td>hora </td>
+                                    <td>1.11000 </td>
+                                    <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                                </tr>
+                    </tbody>
+                </table>
+            </div>
+        </nb-card>
+    </div>
+    <div class="col">
+        <nb-card>
+            <nb-card-header>
+                <nb-card-header>
+                    Mano de obra
+                </nb-card-header>
+            </nb-card-header>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Clave</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Unidad </th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> AMALI-031 </td>
+                            <td> Varilla de 1/2</td>
+                            <td>kg </td>
+                            <td>2.5 </td>
+                            <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                        </tr>
+                        <tr>
+                            <td> AMAIN-013 </td>
+                            <td> Equipo oxí-acetileno </td>
+                            <td>hora </td>
+                            <td>0.03000 </td>
+                            <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                        </tr>
+                        <tr>
+                            <td> AMALI-031 </td>
+                            <td> Rompedora eléctrica de 30 kg mca Makita con punta tipo lapiz </td>
+                            <td>hora </td>
+                            <td>1.11000 </td>
+                            <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                            <tr>
+                                <td> AMAIN-013 </td>
+                                <td> Equipo oxí-acetileno </td>
+                                <td>hora </td>
+                                <td>0.03000 </td>
+                                <td><button nbButton>
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                                </button></td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </nb-card>
+    </div>
+</div>

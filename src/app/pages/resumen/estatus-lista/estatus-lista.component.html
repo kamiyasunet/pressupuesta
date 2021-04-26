@@ -1,0 +1,51 @@
+<nb-card size="large">
+
+    <nb-card-header style="text-align: right;">
+
+        <div class="row">
+            <div class="col">
+                <div class="subtitle">Paquetes recibidos:&nbsp; <strong class="h3">{{recibido_c}}</strong></div>
+            </div>
+            <div class="col">
+                <div class="subtitle"> Efectividad:&nbsp; <strong class="h3">{{(faltantes / recibido_c)*100| number:'1.1-2'}}%</strong></div>
+            </div>
+        </div>
+    </nb-card-header>
+    <nb-card-body style="text-align: right;" *ngIf="recibido_c">
+        <div class="progress-info">
+            <div class="subtitle ">En ruta: <strong class="h5">{{salida_c}}</strong> </div>
+            <nb-progress-bar [value]="(salida_c/recibido_c)*100"></nb-progress-bar>
+            <div class="caption description">
+                <bdi>{{ (salida_c/recibido_c)*100 | number:'1.1-2' }}%</bdi>
+            </div>
+        </div>
+        <div class="progress-info">
+            <div class="subtitle ">Entregado: <strong class="h5">{{entregado_c}}</strong> </div>
+            <nb-progress-bar [value]="(entregado_c/recibido_c)*100"></nb-progress-bar>
+            <div class="caption description">
+                <bdi>{{(entregado_c/recibido_c)*100 | number: '1.1-2' }}%</bdi>
+            </div>
+        </div>
+        <div class="progress-info">
+            <div class="subtitle ">Excepcionado: <strong class="h5">{{excepcionado_c}}</strong> </div>
+            <nb-progress-bar [value]="(excepcionado_c/recibido_c)*100"></nb-progress-bar>
+            <div class="caption description">
+                <bdi>{{ (excepcionado_c/recibido_c)*100 | number: '1.1-2' }}%</bdi>
+            </div>
+        </div>
+        <div class="progress-info">
+            <div class="subtitle ">En Almacén: <strong class="h5">{{entrada_c}}</strong> </div>
+            <nb-progress-bar [value]="(entrada_c/recibido_c)*100"></nb-progress-bar>
+            <div class="caption description">
+                <bdi>{{ (entrada_c/recibido_c)*100 | number: '1.1-2' }}%</bdi>
+            </div>
+        </div>
+        <div class="progress-info">
+            <div class="subtitle ">Recolectado: <strong class="h5">{{recolectado_c}}</strong> </div>
+            <nb-progress-bar [value]="(recolectado_c/recibido_c)*100"></nb-progress-bar>
+            <div class="caption description">
+                <bdi>{{ (recolectado_c/recibido_c)*100 | number: '1.1-2'}}%</bdi>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

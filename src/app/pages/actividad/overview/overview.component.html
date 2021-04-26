@@ -1,0 +1,223 @@
+<div class="row">
+    <div class="col">
+        <nb-card>
+            <nb-card-header>
+                <div class="row">
+                    <div class="col">
+                        <h5><i style="color: #AB47BC;" class="fas fa-chart-line"></i> {{actividad.actividad}} <span class="text-muted">
+                            </span><span class="text-muted ">
+                                {{actividad.zona}} {{actividad.fase}}
+                            </span></h5>
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        <ul class="list-inline ">
+                            <li class="list-inline-item ">
+
+                                <button (click)="open2(dialog)" nbButton outline status="primary" ghost size="small" nbTooltip="Editar actividad " nbTooltipPlacement="top ">
+                                    <span style="font-size: 2em; ">
+                                        <i class="fas fa-edit "></i>
+                                    </span>
+                                </button>
+                            </li>
+                            <li class="list-inline-item ">
+                                <button nbButton outline status="primary" ghost size="small" nbTooltip="Opciones" nbTooltipPlacement="top">
+                                    <span style="font-size: 2em; ">
+                                        <i class="fas fa-cogs "></i>
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-lg-6 " style="text-align: justify; ">
+                        <strong>Descripción:</strong>
+                        <span class="text-muted ">{{actividad.descripcion}}</span>
+                    </div>
+                    <div class="col-lg-3 " style="text-align: right; ">
+                        <ul class="list-inline ">
+                            <li class="list-inline-item ">
+                                <div style="padding-bottom:15px; text-align: center ">
+                                    <span style="text-align: center" class="text-muted">Comienzo</span>
+                                </div>
+                                <span style="text-align: center; background-color:#F5EEF8 ; color:#884EA0; padding-bottom: 3px;padding-top: 3px; padding-left: 20px; padding-right: 20px; ">
+                                    <strong>{{actividad.comienzo | date:"shortDate" }}</strong></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <div style=" padding-bottom:15px; text-align: center">
+                                    <span class="text-muted">Término</span>
+                                </div>
+                                <span style="text-align: center; background-color:#F6DDCC ; color:#D35400; padding-bottom: 3px;padding-top: 3px; padding-left: 20px; padding-right: 20px; ">
+                                    <strong>{{actividad.termino | date:"shortDate"}}</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div style="padding-bottom:10px;">
+
+                            <span class=" text-muted ">Progreso</span>
+                        </div>
+                        <div class="row ">
+                            <div class="col-9 ">
+                                <nb-progress-bar style="width: 100%;" [value]=" actividad.progreso | number " status="info" [displayValue]="true">
+                                </nb-progress-bar>
+                            </div>
+                            <div class="col-3 " style="color: #AB47BC; font-size: large;">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-body>
+
+            <nb-card-footer>
+                <div class="row ">
+                    <div class="col ">
+                        <div class="row " style="padding-bottom: 15px; ">
+                            <div class="col-2 " style="padding-right: 15px; ">
+                                <img src="..\assets\images\presupuesto_icono.png " alt=" " style="width:50px;height:50px; ">
+                            </div>
+                            <div class="col-10 ">
+                                <small class="text-muted ">Presupuestado</small>
+                                <h6 class="text-muted ">{{actividad.presupuesto | currency }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ">
+                        <div class="row " style="padding-bottom: 15px; ">
+                            <div class="col-2 " style="padding-right: 15px; ">
+                                <img src=" ..\assets\images\presupuesto_icono.png " alt=" " style="width:50px;height:50px; ">
+                            </div>
+                            <div class="col-10 ">
+                                <small class="text-muted ">Valor ganado</small>
+                                <h6 class="text-muted ">{{actividad.valor_ganado | currency}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ">
+                        <div class="row " style="padding-bottom: 15px; ">
+                            <div class="col-2 " style="padding-right: 15px;">
+                                <img src=" ..\assets\images\presupuesto_icono.png " alt=" " style="width:50px;height:50px; ">
+                            </div>
+                            <div class="col-10 ">
+                                <small class="text-muted ">Costo real</small>
+                                <h6 class="text-muted ">{{actividad.costo_actual | currency}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col ">
+                        <div class="row " style="padding-bottom: 15px; ">
+                            <div class="col-2">
+                                <img src="..\assets\images\presupuesto_icono.png" alt="" style="width:50px;height:50px;  ">
+                            </div>
+                            <div class="col-10 ">
+                                <small class="text-muted ">Horas Hombre</small>
+                                <h6 class="text-muted ">{{actividad.horas_hombre | number}} hrs.</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </nb-card-footer>
+        </nb-card>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-lg-6 ">
+        <nb-card>
+            <nb-card-header>Valor ganado</nb-card-header>
+            <nb-card-body>
+                <ngx-chartjs-line></ngx-chartjs-line>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-lg-6 ">
+        <nb-card>
+            <nb-card-header>Análisis de costos</nb-card-header>
+            <nb-card-body>
+                <ngx-chartjs-bar-horizontal></ngx-chartjs-bar-horizontal> 
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+
+<ng-template #dialog let-data let-ref="dialogRef ">
+    <nb-card>
+        <nb-card-header>Actividad</nb-card-header>
+        <nb-card-body>
+            <div class="row ">
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="actividad " class="label ">Actividad</label>
+                        <input type="text " nbInput fullWidth id="actividad " placeholder="Actividad " required [(ngModel)]="actividad.actividad ">
+                    </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="nivel " class="label ">Nivel</label>
+                        <input type="text " nbInput fullWidth id="nivel " placeholder="Nivel " [(ngModel)]="actividad.nivel ">
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="inputfase " class="label ">Fase</label>
+                        <input type="text " nbInput fullWidth id="inputfase " placeholder="Fase " [(ngModel)]="actividad.fase ">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row ">
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="inputComienzo " class="label ">Comienzo</label><br>
+                        <input nbInput placeholder="Comienzo " [nbDatepicker]="comienzo " [(ngModel)]="actividad.comienzo ">
+                        <nb-datepicker #comienzo></nb-datepicker>
+                    </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="inputTermino " class="label ">Termino</label><br>
+                        <input nbInput placeholder="Termino " [nbDatepicker]="termino " [(ngModel)]="actividad.termino ">
+                        <nb-datepicker #termino></nb-datepicker>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="inputPresuestado " class="label ">Presupuestado</label>
+                        <input type="text " nbInput fullWidth id="inputPresuestado " placeholder="Presuestado " [(ngModel)]="actividad.presupuesto ">
+                    </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="inputValorGanado " class="label ">Valor ganado</label>
+                        <input type="text " nbInput fullWidth id="inputValorGanado " placeholder="Valor ganado " [(ngModel)]="actividad.valor_ganado ">
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="inputCostoReal " class="label ">Costo Real</label>
+                        <input type="text " nbInput fullWidth id="inputCostoReal " placeholder="Costo Real " [(ngModel)]="actividad.costo_actual ">
+                    </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <div class="form-group ">
+                        <label for="inputHoraHombre " class="label ">Hora Hombre</label>
+                        <input type="text " nbInput fullWidth id="inputHoraHombre " placeholder="Hora Hombre " [(ngModel)]="actividad.horas_hombre ">
+                    </div>
+                </div>
+            </div>
+
+            <button nbButton type="submit " (click)="ref.close() ">Ok</button>
+        </nb-card-body>
+    </nb-card>
+</ng-template>

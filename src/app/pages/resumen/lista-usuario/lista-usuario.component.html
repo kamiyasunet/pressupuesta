@@ -1,0 +1,49 @@
+<nb-card>
+    <nb-card-header>Estatus por Usuario</nb-card-header>
+
+    <div class="table-responsive">
+        <table class="table " style="color:rgb(138, 138, 138) " style="text-align: center; ">
+            <thead>
+                <tr>
+                    <th scope="col ">#</th>
+                    <th style="text-align: left; ">Mensajero</th>
+                    <th scope="col ">Recibido</th>
+                    <th scope="col ">Entregado</th>
+                    <th scope="col ">Excepcionado</th>
+                    <th scope="col ">Recolectado</th>
+                    <th scope="col ">Por entregar</th>
+                    <th scope="col ">Efectividad</th>
+                    <th scope="col ">Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usu of usuariosAvance ; let i=index ">
+
+                    <td>{{i+1}}</td>
+                    <td style="text-align: left; "> {{usu.mensajero}}</td>
+                    <td>{{usu.recibido}}</td>
+                    <td>{{usu.entregado}}</td>
+                    <td>{{usu.excepcionado}}</td>
+                    <td>{{usu.recolectado}}</td>
+                    <td>{{usu.por_entregar}}</td>
+                    <th style="text-align: left; ">{{usu.avance | number:'1.0-2' }} %</th>
+                    <td>
+                        <!--   <button nbButton [routerLink]="['/usuario-avance/', usu.id_usuario]"><nb-icon icon="menu-outline"></nb-icon></button> -->
+                        <button nbButton (click)="gotoUsuario(usu.id_usuario)"><nb-icon icon="menu-outline"></nb-icon></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col ">#</th>
+                    <th style="text-align: left; ">Totales</th>
+                    <th scope="col ">{{recibido_c}}</th>
+                    <th scope="col ">{{entregado_c}}</th>
+                    <th scope="col ">{{excepcionado_c}}</th>
+                    <th scope="col ">{{recolectado_c}}</th>
+                    <th scope="col ">{{recibido_c-entregado_c-excepcionado_c -recolectado_c }}</th>
+                    <th scope="col " style="text-align: left; ">{{( faltantes / recibido_c )*100| number:'1.0-2'}}%
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</nb-card>

@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col">
+        <nb-card>
+            <nb-card-header style="text-align: right;">
+                <p class="h4" *ngIf="usuario">{{usuario.nombres}} {{usuario.a_paterno}} {{usuario.a_materno}}</p>
+            </nb-card-header>
+            <nb-card-body>
+                <input nbInput placeholder="Rango de fechas" [nbDatepicker]="rangepicker">
+                <nb-rangepicker #rangepicker [range]="range" (rangeChange)="handleRangeChange($event)"></nb-rangepicker>
+            </nb-card-body>
+        </nb-card>
+
+    </div>
+
+</div>
+<div class="row">
+
+
+    <div class=" col-xxxl-6 col-xxl-6 col-lg-6 col-md-6 ">
+
+        <nb-card size="large">
+
+            <nb-card-header style="text-align: right; ">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="subtitle">Paquetes recibidos:&nbsp; <strong class="h3">{{Brecibido}}</strong></div>
+                    </div>
+                    <div class="col ">
+                        <div class="subtitle "> Efectividad:&nbsp; <strong class="h3">{{(Bfaltantes / Brecibido)*100|
+                        number:'1.0-2'}}%</strong></div>
+                    </div>
+                </div>
+            </nb-card-header>
+            <nb-card-body style="text-align: right; ">
+                <div class=" progress-info ">
+                    <div class="subtitle ">En ruta: <strong class="h5">{{Bsalida}}</strong> </div>
+                    <nb-progress-bar [value]="(Bsalida/Brecibido)*100">
+                    </nb-progress-bar>
+                    <div class="caption description ">
+                        <bdi>{{ (Bsalida/Brecibido)*100 | number: '1.0-2' }}%</bdi>
+                    </div>
+                </div>
+                <div class=" progress-info ">
+                    <div class="subtitle ">Entregado: <strong class="h5">{{Bentregado}}</strong> </div>
+                    <nb-progress-bar [value]="(Bentregado/Brecibido)*100 ">
+                    </nb-progress-bar>
+                    <div class="caption description ">
+                        <bdi>{{ (Bentregado/Brecibido)*100 | number: '1.0-2' }}%</bdi>
+                    </div>
+                </div>
+                <div class="progress-info ">
+
+                    <div class="subtitle ">Excepcionado: <strong class="h5">{{Bexcepcionado}}</strong> </div>
+                    <nb-progress-bar [value]="(Bexcepcionado/Brecibido)*100">
+                    </nb-progress-bar>
+                    <div class="caption description ">
+                        <bdi>{{ (Bexcepcionado/Brecibido)*100 | number: '1.0-2' }}%</bdi>
+                    </div>
+                </div>
+                <div class="progress-info ">
+                    <div class="subtitle ">En Almacén: <strong class="h5">{{Bentrada}}</strong> </div>
+                    <nb-progress-bar [value]="(Bentrada/Brecibido)*100 ">
+                    </nb-progress-bar>
+                    <div class="caption description ">
+                        <bdi>{{ (Bentrada/Brecibido)*100 | number: '1.0-2' }}%</bdi>
+                    </div>
+                </div>
+                <div class="progress-info ">
+                    <div class="subtitle ">Recolectado: <strong class="h5">{{Brecolectado}}</strong> </div>
+                    <nb-progress-bar [displayValue]="true " [value]="(Brecolectado/Brecibido)*100">
+                    </nb-progress-bar>
+                    <div class="caption description ">
+                        <bdi>{{ (Brecolectado/Brecibido)*100 | number: '1.0-2' }}%</bdi>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+
+    <div class="col-xxxl-6 col-xxl-6 col-lg-6 col-md-6 ">
+        <nb-card size="large">
+            <nb-card-body>
+                <div echarts [options]="options" class="echart"></div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+<div class="row ">
+    <div class="col ">
+        <nb-card>
+            <nb-card-header>Estatus por Usuario <button type="button " class="btn btn-outline-success " (click)="exportexcel() ">
+                Excel
+            </button></nb-card-header>
+            <nb-card-body>
+                <table class="table table-responsive-sm table-bordered  table-sm" id="excel-table">
+                    <thead>
+                        <tr>
+                            <th scope="col ">No. </th>
+                            <th scope="col ">Codigo </th>
+                            <th scope="col ">Codigo postal</th>
+                            <th scope="col ">Fecha </th>
+                            <th scope="col ">Estatus</th>
+                            <th scope="col ">Excepción</th>
+                            <th scope="col ">Ver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--   <tr *ngFor="let mov of array | filtro: textoBuscar : pickerDate : 'codigo': 'zona': 'estatus': 'fecha_entrada' "> -->
+                        <tr *ngFor="let mov of paquetes; index as i " [ngStyle]="{ 'color':mov.estatus=='No entregado' ? 'red' :(mov.estatus=='No entregado' ? 'red' : null)} ">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ mov.codigo }}</td>
+                            <td>{{ mov.codigo_postal }}</td>
+                            <td>{{ mov.fecha_movimiento | date: 'dd/MM/yyyy' }}</td>
+                            <td>{{ mov.estatus }}</td>
+                            <td>{{ mov.excepcion }}</td>
+                            <td>
+                                <button nbButton (click)="gotoPaquete(mov.id_paquete)">
+                                    <nb-icon icon="menu-outline"></nb-icon>
+                             
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
