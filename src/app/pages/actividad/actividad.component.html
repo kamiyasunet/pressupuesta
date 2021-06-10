@@ -1,16 +1,21 @@
-<nb-card>
-    <nb-tabset>
-        <nb-tab tabTitle="Overview">
-            <ngx-overview></ngx-overview>
-        </nb-tab>
-        <nb-tab tabTitle="Descripción ">
-            <ngx-descripcion></ngx-descripcion>
-        </nb-tab>
-        <nb-tab tabTitle="Avance">
-            <ngx-avance> </ngx-avance>
-        </nb-tab>
-        <nb-tab tabTitle="Simple Tab #3">
-            <span>Content #3</span>
-        </nb-tab>
-    </nb-tabset>
-</nb-card>
+<h5>
+    <i style="color: #AB47BC;" class="fas fa-chart-line"></i> {{actividad.actividad}} <span class="text-muted">
+         </span><span class="text-muted ">
+             {{actividad.zona}} {{actividad.fase}}
+         </span>
+</h5>
+
+<nb-tabset>
+    <nb-tab tabTitle="Overview">
+        <ngx-overview></ngx-overview>
+    </nb-tab>
+    <nb-tab tabTitle="Descripción ">
+        <ngx-descripcion></ngx-descripcion>
+    </nb-tab>
+    <nb-tab tabTitle="Avance">
+        <ngx-avance> </ngx-avance>
+    </nb-tab>
+    <nb-tab tabTitle="Ordenes de cambio">
+        <ngx-cambios> </ngx-cambios>
+    </nb-tab>
+</nb-tabset>

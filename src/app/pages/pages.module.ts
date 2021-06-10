@@ -10,6 +10,14 @@ import { UsuarioAvanceModule } from './usuario-avance/usuario-avance.module';
 import { PaqueteModule } from './paquete/paquete.module';
 import { ResumenModule } from './resumen/resumen.module';
 import { ActividadModule } from './actividad/actividad.module';
+import { ActividadesModule } from './actividades/actividades.module';
+import { PresupuestoModule } from './presupuesto/presupuesto.module';
+import { FasesModule } from './fases/fases.module';
+import { ConceptosModule } from './conceptos/conceptos.module';
+import { PipesModule } from '../pipes/pipes.module';
+import { MatricesModule } from './matrices/matrices.module';
+import { Fase1Component } from './fase1/fase1.component';
+import { Fase1Module } from './fase1/fase1.module';
 
 
 
@@ -23,13 +31,19 @@ import { ActividadModule } from './actividad/actividad.module';
     MiscellaneousModule,
     UsuarioAvanceModule,
     PaqueteModule,
-    ResumenModule,  
-    
-     
+    ResumenModule,
+    ActividadModule,
+    ActividadesModule,
+    PresupuestoModule,
+    FasesModule,
+    Fase1Module,
+    ConceptosModule,
+    MatricesModule,
+  
   ],
   declarations: [
     PagesComponent,
-  
+    
   ],
 })
 export class PagesModule {

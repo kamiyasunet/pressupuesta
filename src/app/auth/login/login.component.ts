@@ -6,4 +6,10 @@ import { NbLoginComponent } from '@nebular/auth';
     templateUrl: './login.component.html',
 })
 export class NgxLoginComponent extends NbLoginComponent {
+
+  /*   function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+} */
 }

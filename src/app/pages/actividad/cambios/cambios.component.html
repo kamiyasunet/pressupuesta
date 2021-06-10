@@ -1,0 +1,54 @@
+<div class="row">
+
+    <div class="col">
+        <nb-card>
+            <nb-card-header>
+                Conceptos
+            </nb-card-header>
+            <nb-card-body>
+                <div *ngFor="let item of materiales">
+                    <div class="row">
+                        <div class="col-9">
+                            <span class="stats">{{item.item}}</span>
+                            <span class="stats">{{item.descripcion}}</span>
+                            <br>
+                            <span class="stats"><span class="caption">Cantidad</span>
+                            <span>{{item.cantidad}} <span class="caption">{{item.unidad}}</span></span>
+                            </span>
+                        </div>
+
+                        <div class="col-3">
+                            <button nbButton (click)="agregar(item.id_material)">+</button>
+                        </div>
+                    </div>
+
+                    <hr>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col">
+        <nb-card>
+            <nb-card-header>
+                Orden de cambio
+            </nb-card-header>
+            <nb-card-body>
+                <div *ngFor="let item of cambios">
+                    <div class="row">
+                        <div class="col-9">
+                            <span class="stats">{{item.item}}</span>
+                            <span class="stats">{{item.descripcion}}</span>
+                            <br>
+                            <span class="stats"><span class="caption">Cantidad</span>
+                            <span>{{item.cantidad}} <span class="caption">{{item.unidad}}</span></span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <hr>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

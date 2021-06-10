@@ -12,8 +12,8 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AgmCoreModule } from '@agm/core';
-import { FormsModule } from './pages/forms/forms.module';
-//import { LoginModule } from './login/login.module';
+import { PipesModule } from './pipes/pipes.module';
+
 import {
   //NbChatModule,
   NbDatepickerModule,
@@ -29,6 +29,8 @@ import {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+
+    PipesModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

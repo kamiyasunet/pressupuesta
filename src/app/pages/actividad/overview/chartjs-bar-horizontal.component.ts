@@ -24,13 +24,18 @@ export class ChartjsBarHorizontalComponent implements OnDestroy {
         datasets: [{
           barPercentage: 0.5,
           barThickness: 6,
-            label: 'Presupuestado',
+            label: 'Valor Ganado',
             backgroundColor: colors.infoLight,
             borderWidth: 1,
             data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           }, {
-            label: 'Costo real',
+            label: 'Presupuesto',
             backgroundColor: colors.successLight,
+            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+          },
+          {
+            label: 'Costo real',
+            backgroundColor: colors.danger,
             data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           },
         ],

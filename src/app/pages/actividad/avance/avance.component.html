@@ -4,110 +4,149 @@
             <nb-card-header>
                 <div class="row">
                     <div class="col">
-                        <h5><i style="color: #AB47BC;" class="fas fa-chart-line"></i> {{actividad.actividad}} <span class="text-muted">
-                            </span><span class="text-muted ">
-                                {{actividad.zona}} {{actividad.fase}}
-                            </span></h5>
+                        <nb-progress-bar style="width: 100%" [value]="actividad.progreso | number" status="info" [displayValue]="true">
+                        </nb-progress-bar>
                     </div>
-                    <div class="col" style="text-align: right;">
-                        <ul class="list-inline ">
-                            <li class="list-inline-item ">
+                    <div class="col" style="text-align: right">
 
-                                <button nbButton outline status="primary" ghost size="small" nbTooltip="Editar actividad " nbTooltipPlacement="top ">
-                                    <span style="font-size: 2em; ">
-                                        <i class="fas fa-edit "></i>
-                                    </span>
+                        <form #form1>
+                            <div class="col">
+                                <input #avance="ngModel" class="form-control" ngModel [class.is-invalid]="avance.invalid && avance.touched" name="avance" type="text" nbInput placeholder="Porcentaje avanzado" required />
+                            </div>
+                            <div class="col">
+                                <button nbButton (click)="open1(avanceDialog)" outline ghost size="small" nbTooltip="Agregar Avance" nbTooltipPlacement="top">
+                                        <span style="font-size: 1.5em">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
                                 </button>
-                            </li>
-                            <li class="list-inline-item ">
-                                <button nbButton outline status="primary" ghost size="small" nbTooltip="Opciones" nbTooltipPlacement="top">
-                                    <span style="font-size: 2em; ">
-                                        <i class="fas fa-cogs "></i>
-                                    </span>
-                                </button>
-                            </li>
-                        </ul>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <nb-progress-bar style="width: 100%;" [value]=" actividad.progreso | number " status="info" [displayValue]="true">
-                </nb-progress-bar>
             </nb-card-header>
-            <div class="table-responsive">
-                <table class="table table-sm table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Clave</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Unidad </th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> AMALI-031 </td>
-                            <td> Varilla de 1/2</td>
-                            <td>kg </td>
-                            <td>2.5 </td>
-                            <td><button nbButton>
-                                    <nb-icon icon="menu-outline"></nb-icon>
-                                </button></td>
-                        </tr>
-                        <tr>
-                            <td> AMAIN-013 </td>
-                            <td> Equipo oxí-acetileno </td>
-                            <td>hora </td>
-                            <td>0.03000 </td>
-                            <td><button nbButton>
-                                    <nb-icon icon="menu-outline"></nb-icon>
-                                </button></td>
-                        </tr>
-                        <tr>
-                            <td> AMALI-031 </td>
-                            <td> Rompedora eléctrica de 30 kg mca Makita con punta tipo lapiz </td>
-                            <td>hora </td>
-                            <td>1.11000 </td>
-                            <td><button nbButton>
-                                    <nb-icon icon="menu-outline"></nb-icon>
-                                </button></td>
-                            <tr>
-                                <td> AMAIN-013 </td>
-                                <td> Equipo oxí-acetileno </td>
-                                <td>hora </td>
-                                <td>0.03000 </td>
-                                <td><button nbButton>
-                                    <nb-icon icon="menu-outline"></nb-icon>
-                                </button></td>
-                            </tr>
-                            <tr>
-                                <td> AMALI-031 </td>
-                                <td> Rompedora eléctrica de 30 kg mca Makita con punta tipo lapiz </td>
-                                <td>hora </td>
-                                <td>1.11000 </td>
-                                <td><button nbButton>
-                                    <nb-icon icon="menu-outline"></nb-icon>
-                                </button></td>
-                                <tr>
-                                    <td> AMAIN-013 </td>
-                                    <td> Equipo oxí-acetileno </td>
-                                    <td>hora </td>
-                                    <td>0.03000 </td>
-                                    <td><button nbButton>
-                                    <nb-icon icon="menu-outline"></nb-icon>
-                                </button></td>
-                                </tr>
-                                <tr>
-                                    <td> AMALI-031 </td>
-                                    <td> Rompedora eléctrica de 30 kg mca Makita con punta tipo lapiz </td>
-                                    <td>hora </td>
-                                    <td>1.11000 </td>
-                                    <td><button nbButton>
-                                    <nb-icon icon="menu-outline"></nb-icon>
-                                </button></td>
-                                </tr>
-                    </tbody>
-                </table>
-            </div>
+            <nb-accordion>
+                <nb-accordion-item *ngFor="let avance of avances">
+                    <nb-accordion-item-header>
+                        Avance {{ avance.id_avance }}&nbsp;
+                        <strong>({{ avance.porcentaje }}%)</strong>
+                    </nb-accordion-item-header>
+                    <nb-accordion-item-body>
+                        <nb-card>
+                            <nb-card-header>
+                                <div class="row">
+                                    <div class="col">
+                                        <span>Fecha: {{ avance.fecha | date}}</span>
+                                    </div>
+                                    <div class="col">
+                                        <span>% Avance <strong>{{ avance.porcentaje }}%</strong></span>
+                                    </div>
+                                    <div class="col" style="text-align: right">
+                                        <button nbButton outline ghost size="small " nbTooltip="Editar" nbTooltipPlacement="top">
+                                            <span style="font-size: 1em">
+                                            <i class="fas fa-edit"></i>
+                                            </span>
+                                        </button>
+                                        <button nbButton outline ghost size="small" nbTooltip="Eliminar" nbTooltipPlacement="top">
+                                            <span style="font-size: 1em">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </nb-card-header>
+                            <nb-card-body>
+                                <nb-card>
+                                    <nb-card-header>
+                                        <div class="row">
+                                            <div class="col">Elementos</div>
+                                            <div class="col" style="text-align: right">
+                                                <button nbButton (click)="open2(elementoDialog, avance.id_avance)" outline ghost size="small " nbTooltip="Agregar Elemento " nbTooltipPlacement="top">
+                                                    <span style="font-size: em">
+                                                        <i class="fas fa-plus"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </nb-card-header>
+                                    <nb-card-body>
+                                        <div *ngFor="let item of avance.elemento">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <nb-user [name]="item.elemento" [title]="item.puesto"></nb-user>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="col">{{ item.cantidad }}hr</div>
+                                                </div>
+                                                <div class="col"></div>
+                                                <div class="col" style="text-align: right">
+                                                    <button nbButton outline ghost size="small" nbTooltip="Eliminar" nbTooltipPlacement="right">
+                                                        <span style="font-size: 1em">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                        </div>
+                                    </nb-card-body>
+                                </nb-card>
+                            </nb-card-body>
+                        </nb-card>
+                    </nb-accordion-item-body>
+                </nb-accordion-item>
+            </nb-accordion>
         </nb-card>
     </div>
 </div>
+
+<ng-template #avanceDialog let-data let-ref="dialogRef">
+    <form #form1>
+        <nb-card>
+            <nb-card-header>
+                <div class="row">
+                    <div class="col">Avance</div>
+                    <div class="col" style="text-align: right"></div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <div class="form-group">
+                    <label for="avance " class="label">Avance (%)</label>
+                    <input #avance="ngModel" class="form-control" ngModel [class.is-invalid]="avance.invalid && avance.touched" name="avance" type="text " nbInput fullWidth placeholder="Porcentaje avanzado " required />
+                </div>
+
+            </nb-card-body>
+            <nb-card-footer>
+                <button (click)="ref.close(form1) " type="submit" nbButton status="info">Agregar</button>
+
+            </nb-card-footer>
+        </nb-card>
+    </form>
+</ng-template>
+<ng-template #elementoDialog let-data let-ref="dialogRef ">
+    <nb-card>
+        <nb-card-header>Avance</nb-card-header>
+        <nb-card-body>
+            <form #form2>
+                <div class="form-group">
+                    <label for="elemento " class="label">Elemento</label>
+                    <input #elemento name="elemento" id="elemento" fullWidth [ngModel]="value" (ngModelChange)="onModelChange($event)" nbInput type="text " placeholder="Elemento " [nbAutocomplete]="autoNgModel" />
+                    <nb-autocomplete #autoNgModel>
+                        <nb-option *ngFor="let option of filteredNgModelOptions$ | async" [value]="option">
+                            {{ option }}
+                        </nb-option>
+                    </nb-autocomplete>
+                </div>
+
+                <div class="form-group">
+                    <label for="cantidad " class="label">Cantidad</label>
+                    <input #cantidad name="cantidad" id="cantidad" type="text" nbInput fullWidth name="cantidad " placeholder="Cantidad " />
+                </div>
+            </form>
+        </nb-card-body>
+        <nb-card-footer>
+            <button (click)="ref.close(form2)" type="submit " nbButton status="info">
+                Aceptar
+            </button>
+        </nb-card-footer>
+    </nb-card>
+</ng-template>

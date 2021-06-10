@@ -8,11 +8,11 @@ import { FsIconComponent } from './tree-grid/tree-grid.component';
 
 @NgModule({
   imports: [
+    ThemeModule,
     NbCardModule,
     NbTreeGridModule,
     NbIconModule,
     NbInputModule,
-    ThemeModule,
     TablesRoutingModule,
     Ng2SmartTableModule,
   ],

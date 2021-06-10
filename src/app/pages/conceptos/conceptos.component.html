@@ -1,0 +1,31 @@
+<nb-card>
+    <nb-card-header style="background-color: black; color: white;">
+
+        <div class="row">
+            <div class="col-10">
+                <span style="font-size: 1.5em; ">
+                    <button style="border: none; background: none; "><i  style="color: white;" class="fas fa-arrow-left" (click)="gotoBack()"></i></button>
+                
+                </span> &nbsp; Conceptos
+            </div>
+            <div class="col-2">
+                <h3 style="color: white;">
+                    <strong>PRESSUPUESTA</strong>
+                </h3>
+            </div>
+        </div>
+
+
+    </nb-card-header>
+    <nb-card-body>
+        <input [(ngModel)]="textoBuscar" type="text" nbInput fullWidth placeholder="Buscar...">
+
+        <nb-list>
+            <nb-list-item *ngFor="let concepto of conceptos | filtro :textoBuscar: 'descripcion' " (click)="gotoMatriz(concepto.clave)">
+                <nb-user [name]="concepto.descripcion" [title]="concepto.clave"> </nb-user>
+                {{concepto.unidad}}
+            </nb-list-item>
+        </nb-list>
+
+    </nb-card-body>
+</nb-card>

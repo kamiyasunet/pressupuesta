@@ -1,0 +1,353 @@
+<nb-card>
+
+
+
+
+
+    <nb-card-header>
+        <div class="row">
+            <div class="col" style="text-align: left;">
+                <span style=" font-size: 1.1em; ">
+                <button style="border: none; background: none; "><i class="fas fa-arrow-left " (click)="gotoBack() "></i></button>
+            </span> &nbsp; Análisis de precios unitarios
+            </div>
+            <div class="col" style="text-align: right;">
+
+                <button nbButton status="success" (click)="open2(dialog)">Compartir</button>
+                <button nbButton status="success" (click)="exportToExcel()">Exportar Excel</button>
+
+
+            </div>
+
+        </div>
+
+
+    </nb-card-header>
+
+    <div [ngClass]="{'blurry-text': burry,'':!burry }" style=" margin: 0 auto; max-width: 1024px; padding: 1.5em; " oncopy="return false">
+        <!--    <input [(ngModel)]="textoBuscar " type="text " nbInput fullWidth placeholder="Buscar... ">             -->
+
+
+        <div class="row " style=" background-color:#AAB7B8; ">
+            <div class="col " style="text-align: center; ">
+                <h6>
+                    <strong>Análisis de precio unitario</strong>
+                </h6>
+            </div>
+        </div>
+
+        <div class="row " style=" background-color:#85929E; ">
+            <div class="col-2 " style="text-align: center; ">
+                <strong>
+                    Clave
+                </strong>
+            </div>
+            <div class="col-7 ">
+                <strong>
+                    Descripción
+                </strong>
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                <strong>
+                    Unidad
+                </strong>
+            </div>
+            <div class="col-2 " style="text-align: center; ">
+                <strong>
+                    Rend. (pzas/jor)
+                </strong>
+            </div>
+
+        </div>
+        <div class=" row " style="background-color: #F2F3F4; ">
+            <div class="col-2 " style="text-align: center; ">
+                {{concepto.clave}}
+            </div>
+            <div class="col-7 ">
+                {{concepto.descripcion}}
+
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{concepto.unidad}}
+            </div>
+            <div class="col-2 " style="text-align: center; ">
+                {{rendimiento}}
+            </div>
+        </div>
+
+        <div class="row " style=" background-color:#85929E; ">
+            <div class="col-2 " style="text-align: center; ">
+                <strong>
+                    Clave
+                </strong>
+            </div>
+            <div class="col-5 ">
+                <strong>
+                    Descripción
+                </strong>
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                <strong>
+                    Unidad
+                </strong>
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                <strong>
+                    Cantidad
+                </strong>
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                <strong>
+                    Costo
+                </strong>
+            </div>
+            <div class="col-2 " style="text-align: center; ">
+                <strong>
+                    Importe
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="row " style=" background-color:#AAB7B8; ">
+            <div class="col " style="text-align: center ">
+                <strong>Materiales</strong>
+            </div>
+        </div>
+        <div class=" row " *ngFor="let material of materiales " style="font-size:small; background-color: #F2F3F4; ">
+
+            <div class="col-2 " style="text-align: center; ">
+                {{ material.clave_insumo}}
+            </div>
+            <div class="col-5 ">
+                {{ material.descripcion_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ material.unidad_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ material.cantidad_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ material.costo_unitario_insumo}}
+            </div>
+            <div class="col-2 " style="text-align: center; ">
+                {{ material.total_insumo}}
+            </div>
+
+        </div>
+        <div class="row " style=" background-color:#85929E; ">
+            <div class="col-7 ">
+                <strong>
+             
+                </strong>
+            </div>
+            <div class="col-3 " style="text-align: center; ">
+                <strong>
+                    Total materiales:
+                </strong>
+            </div>
+
+            <div>
+                <div class="col-2 " style="text-align: center; ">
+                    <strong>
+                    {{totalmateriales | currency }}
+                </strong>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row " style=" background-color:#AAB7B8; ">
+            <div class="col " style="text-align: center ">
+                <strong>Mano de obra</strong>
+            </div>
+        </div>
+        <div class=" row " *ngFor="let mo of manoObra " style="font-size:small; background-color: #F2F3F4; ">
+
+            <div class="col-2 " style="text-align: center; ">
+                {{ mo.clave_insumo}}
+            </div>
+            <div class="col-5 ">
+                {{ mo.descripcion_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ mo.unidad_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ mo.cantidad_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ mo.costo_unitario_insumo}}
+            </div>
+            <div class="col-2 " style="text-align: center; ">
+                {{ mo.total_insumo}}
+            </div>
+
+        </div>
+        <div class="row " style=" background-color:#85929E; ">
+            <div class="col-7 ">
+                <strong>
+        
+                </strong>
+            </div>
+            <div class="col-3 " style="text-align: center; ">
+                <strong>
+                    Total mano de obra:
+                </strong>
+            </div>
+
+            <div class="col-2 " style="text-align: center; ">
+                <strong>
+                  {{totalmanoObra | currency}}
+                </strong>
+            </div>
+        </div>
+
+        <div class="row " style=" background-color:#AAB7B8; ">
+            <div class="col " style="text-align: center ">
+                <strong>Herramienta</strong>
+            </div>
+        </div>
+        <div class=" row " *ngFor="let hrr of herramienta " style="font-size:small; background-color: #F2F3F4; ">
+
+            <div class="col-2 " style="text-align: center; ">
+                {{ hrr.clave_insumo}}
+            </div>
+            <div class="col-5 ">
+                {{ hrr.descripcion_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ hrr.unidad_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ hrr.cantidad_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ hrr.costo_unitario_insumo}}
+            </div>
+            <div class="col-2 " style="text-align: center; ">
+                {{ hrr.total_insumo}}
+            </div>
+        </div>
+        <div class="row " style=" background-color:#85929E; ">
+            <div class="col-7 ">
+                <strong>
+        
+                </strong>
+            </div>
+            <div class="col-3 " style="text-align: center; ">
+                <strong>
+                    Total Herramienta:
+                </strong>
+            </div>
+
+            <div class="col-2 " style="text-align: center; ">
+                <strong>
+                {{totalherramienta | currency}}
+                </strong>
+            </div>
+        </div>
+
+        <div class="row " style=" background-color:#AAB7B8; ">
+            <div class="col " style="text-align: center ">
+                <strong>Equipos</strong>
+            </div>
+        </div>
+        <div class=" row " *ngFor="let eqp of equipos " style="font-size:small; background-color: #F2F3F4; ">
+
+            <div class="col-2 " style="text-align: center; ">
+                {{ eqp.clave_insumo}}
+            </div>
+            <div class="col-5 ">
+                {{ eqp.descripcion_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ eqp.unidad_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ eqp.cantidad_insumo}}
+            </div>
+            <div class="col-1 " style="text-align: center; ">
+                {{ eqp.costo_unitario_insumo}}
+            </div>
+            <div class="col-2 " style="text-align: center; ">
+                {{ eqp.total_insumo}}
+            </div>
+        </div>
+
+        <div class="row " style=" background-color:#85929E; ">
+            <div class="col-7 ">
+                <strong>
+        
+                </strong>
+            </div>
+            <div class="col-3 " style="text-align: center; ">
+                <strong>
+                    Total Equipos:
+                </strong>
+            </div>
+
+            <div class="col-2 " style="text-align: center; ">
+                <strong>
+                {{totalequipos | currency}}
+                </strong>
+            </div>
+        </div>
+        <hr>
+
+        <div>
+
+
+            <div class="row " style=" background-color:#F2F3F4; ">
+                <div class="col-2 ">
+
+                </div>
+                <div class="col-5 ">
+                    <h5>
+                        <strong>Total costo directo:</strong>
+                    </h5>
+                </div>
+                <div class="col-3 " style="text-align: center; ">
+                    <strong></strong>
+                </div>
+
+                <div class="col-2 " style="text-align: center; ">
+
+                    <strong> {{costoDirecto | currency}}</strong>
+
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <div class=" row " style=" background-color:#AAB7B8; ">
+            <div class="col " style="text-align: center; ">
+                Abril 2021
+            </div>
+        </div>
+    </div>
+</nb-card>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+    <nb-card>
+
+        <!--  <img src="../../../assets/images/presupuesto_icono.png " class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} " alt=" "> -->
+        <nb-card-header>Estas a punto de descargar la matriz en Excel, ayúdanos compartiendo en tus redes sociales…</nb-card-header>
+        <nb-card-body style="max-width: 500px;">
+            <share-buttons (opened)="isOpen($event)" theme="material-dark" show="7" size="1" url="https://www.pressupuesta.com/ " title="Matrices online " description="Hola… ¡Les comparto una página donde puedes descargar matrices de precios unitarios en excel totalmente gratis! Miles de precios unitarios listos para descargar. "
+                image="../../../assets/images/presupuesto_icono.png " tags="Matrices, Precios unitarios "></share-buttons>
+        </nb-card-body>
+        <nb-card-footer>
+
+            <div *ngIf="esperar">
+                <span>
+                Espera....{{contador}} 
+                 </span>
+            </div>
+            <!--  <button status="success" [disabled]="!compartido" nbButton (click)=" closeModal() " (click)="ref.close() ">Descargar</button> -->
+            <button status="success" [disabled]="!compartido" nbButton (click)=" closeModal() " (click)="ref.close() ">Descargar</button>
+        </nb-card-footer>
+    </nb-card>
+</ng-template>

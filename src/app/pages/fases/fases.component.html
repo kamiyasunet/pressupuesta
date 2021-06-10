@@ -1,0 +1,22 @@
+<nb-card>
+    <nb-card-header style="background-color: black; color: white;">
+
+        <div class="row        ">
+            <div class="col-10">
+                Fases de la construcción
+            </div>
+            <div class="col-2">
+                <img style="width: 100%;  height: auto;" src="..//..//../assets/images/pressupuesta.png" alt="">
+
+            </div>
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <input [(ngModel)]="textoBuscar" type="text" nbInput fullWidth placeholder="Buscar...">
+        <nb-list>
+            <nb-list-item *ngFor="let fase of fases | filtro :textoBuscar:'fase'" (click)="gotoConceptos(fase.clave_fase)">
+                <nb-user [name]="fase.fase" [title]="fase.especialidad"> </nb-user>
+            </nb-list-item>
+        </nb-list>
+    </nb-card-body>
+</nb-card>

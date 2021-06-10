@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
@@ -9,11 +8,25 @@ import { ResumenComponent } from './resumen/resumen.component';
 import { UsuarioAvanceComponent } from './usuario-avance/usuario-avance.component';
 import { PaqueteComponent } from './paquete/paquete.component';
 import { ActividadComponent } from './actividad/actividad.component';
+import { ActividadesComponent } from './actividades/actividades.component';
+import { PresupuestoComponent } from './presupuesto/presupuesto.component';
+import { FasesComponent } from './fases/fases.component';
+import { Fase1Component } from './fase1/fase1.component';
+import { ConceptosComponent } from './conceptos/conceptos.component';
+import { MatricesComponent } from './matrices/matrices.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
+    {
+      path: 'fases',
+      component: FasesComponent,
+    },
+    {
+      path: 'presupuesto',
+      component: PresupuestoComponent,
+    },
     {
       path: 'dashboard',
       component: ECommerceComponent,
@@ -21,6 +34,10 @@ const routes: Routes = [{
     {
       path: 'actividad',
       component: ActividadComponent,
+    },
+    {
+      path: 'actividades',
+      component: ActividadesComponent,
     },
     {
       path: 'resumen',
@@ -89,6 +106,18 @@ const routes: Routes = [{
     {
       path: 'usuario-avance/:id',
       component: UsuarioAvanceComponent,
+    },
+    {
+      path: 'conceptos/:id/:idf',
+      component: ConceptosComponent,
+    },
+    {
+      path: 'fase1/:id',
+      component: Fase1Component,
+    },
+    {
+      path: 'matrices/:fases/:fase/:concepto',
+      component: MatricesComponent,
     },
     {
       path: 'paquete/:id',

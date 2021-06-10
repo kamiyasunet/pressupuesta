@@ -1,15 +1,16 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
+
   {
-    title: 'Resumen',
+    title: 'Presupuesto',
     icon: 'home-outline',
-    link: '/pages/resumen',
+    link: '/pages/presupuesto',
   },
   {
-    title: 'Actividad',
+    title: 'Fases',
     icon: 'home-outline',
-    link: '/pages/actividad',
+    link: '/pages/fases',
   },
   {
     title: 'Auth',
@@ -21,7 +22,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }
     ]
   },
+ /*  {
+    title: 'Resumen',
+    icon: 'home-outline',
+    link: '/pages/resumen',
+  }, 
   {
+    title: 'Actividad',
+    icon: 'home-outline',
+    link: '/pages/actividad',
+  },
+  {
+    title: 'Actividades',
+    icon: 'home-outline',
+    link: '/pages/actividades',
+  },
+  
+   {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
@@ -35,8 +52,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'FEATURES',
     group: true,
-  },
-  {
+  }, */
+  /* {
     title: 'Layout',
     icon: 'layout-outline',
     children: [
@@ -62,8 +79,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/layout/tabs',
       },
     ],
-  },
-  {
+  }, */
+  /* {
     title: 'Forms',
     icon: 'edit-2-outline',
     children: [
@@ -84,8 +101,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/forms/datepicker',
       },
     ],
-  },
-  {
+  }, */
+ /*  {
     title: 'UI Features',
     icon: 'keypad-outline',
     link: '/pages/ui-features',
@@ -107,8 +124,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/ui-features/search-fields',
       },
     ],
-  },
-  {
+  }, */
+ /*  {
     title: 'Modal & Overlays',
     icon: 'browser-outline',
     children: [
@@ -133,8 +150,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/modal-overlays/tooltip',
       },
     ],
-  },
-  {
+  }, */
+ /*  {
     title: 'Extra Components',
     icon: 'message-circle-outline',
     children: [
@@ -185,8 +202,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/maps/searchmap',
       },
     ],
-  },
-  {
+  }, */
+  /* {
     title: 'Charts',
     icon: 'pie-chart-outline',
     children: [
@@ -241,8 +258,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/miscellaneous/404',
       },
     ],
-  },
-  {
+  }, */
+ /*  {
     title: 'Auth',
     icon: 'lock-outline',
     children: [
@@ -263,5 +280,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/reset-password',
       },
     ],
-  },
+  }, */
 ];

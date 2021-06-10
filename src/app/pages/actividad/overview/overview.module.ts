@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChartjsLineComponent } from './chartjs-line.component';
-import { ChartjsBarHorizontalComponent } from './chartjs-bar-horizontal.component';
 import { ChartModule } from 'angular2-chartjs';
+import { NbCardModule, NbProgressBarModule } from '@nebular/theme';
+
 
 @NgModule({
   declarations: [
-    ChartjsLineComponent,
-    ChartjsBarHorizontalComponent,
+
        
   ],
   imports: [
     CommonModule,
-    ChartModule
-     
+    ChartModule,
+    NbCardModule,
+    NbProgressBarModule,
   ]
 })
 export class OverviewModule { }

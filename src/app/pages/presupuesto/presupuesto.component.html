@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col">
+        <nb-card>
+
+            <nb-card-header>
+                Conceptos
+            </nb-card-header>
+            <nb-card-body>
+
+                <nb-accordion>
+                    <nb-accordion-item *ngFor="let concepto of conceptos">
+                        <nb-accordion-item-header>
+                            Fase {{ concepto.fase }}&nbsp;
+                        </nb-accordion-item-header>
+                        <nb-accordion-item-body style="background-color: rgb(194, 199, 199);">
+                            <strong> Clave &nbsp; Descripción &nbsp; Unidad &nbsp;</strong>
+                            <div class="row" *ngFor="let item of concepto.elemento">
+                                <div class="col">
+
+                                    <hr> {{item.clave}} - {{item.descripcion}} - {{item.unidad}}
+
+                                    <!--  <nb-card (click)="gotopage(item.id_concepto)" accent="info" style="max-width:300px; max-height: 200;min-width: 250;">
+                                        <nb-card-header>
+                                            {{item.id_concepto}} - {{item.descripcion}}-
+                                            <div class="caption ">Unidad: {{ item.unidad }}</div>
+                                        </nb-card-header>
+                                        <nb-card-body>
+                                            <div class="col ">{{ item.clave }}</div>
+                                        </nb-card-body>
+                                    </nb-card> -->
+                                </div>
+                            </div>
+                        </nb-accordion-item-body>
+                    </nb-accordion-item>
+                </nb-accordion>
+
+
+            </nb-card-body>
+
+        </nb-card>
+    </div>
+    <div class="col">
+        <nb-card>
+
+            <nb-card-header>
+                Presupuesto
+            </nb-card-header>
+
+        </nb-card>
+
+    </div>
+</div>

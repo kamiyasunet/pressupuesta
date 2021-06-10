@@ -225,10 +225,7 @@ export class UsuarioAvanceComponent implements OnInit {
 
   gotoPaquete(id: any) {
 
-    //pages/usuario-avance/1
-
     this.router.navigateByUrl('/pages/paquete/' + id)
-
 
   }
 

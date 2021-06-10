@@ -15,3 +15,16 @@ export interface Actividad {
     nivel?:string
 
 }
+
+export interface AvanceNuevo {
+    id_avance?: string;
+    fecha?: string;
+    porcentaje?: string;
+    elemento?:any[]
+   
+}
+export interface ElementoNuevo{
+   elemento?: string
+   puesto?: string,
+   cantidad?: string,
+}
